@@ -29,7 +29,7 @@ public class CalenderSerDeSer {
             }
         });
         rep.append("}");
-        FileWritter.writeFile(new File("calender"), rep.toString(), "r");
+        FileWritter.writeFile("calender", rep.toString(), "r");
     }
 
 }

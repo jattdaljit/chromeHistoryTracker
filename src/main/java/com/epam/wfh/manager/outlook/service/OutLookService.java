@@ -36,7 +36,7 @@ public class OutLookService {
             accessToken = Authentication.getUserAccessToken(appScopes);
             user = Graph.getUser(accessToken);
             try{
-                FileWritter.writeFile(new File("accesstoken"),accessToken,"r");
+                FileWritter.writeFile("accesstoken",accessToken,"r");
             }catch (Exception e1){
                 System.out.println("Exception in writting toekn"+e1);
             }

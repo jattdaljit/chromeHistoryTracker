@@ -31,7 +31,7 @@ public class ConnectionSerDeSer {
 
         app.append("}");
 
-        FileWritter.writeFile(new File("connections"),app.toString(), "a");
+        FileWritter.writeFile("connections",app.toString(), "a");
 
 
     }

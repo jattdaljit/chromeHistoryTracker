@@ -1,14 +1,21 @@
 package com.epam.wfh.manager.persistent;
 
+import com.epam.wfh.manager.service.FileUtility;
+
 import java.io.*;
 
 public class FileWritter {
 
 
-    public static void writeFile(File file, String content, String mode) throws IOException {
+    public static String getHomePath(){
+        return System.getProperty(FileUtility.USER_HOME_DIRECTORY);
+    }
+
+    public static void writeFile(String fileName, String content, String mode) throws IOException {
         //mode a append, r rewrite
         System.out.println("content "+content);
-
+        new File(getHomePath() + FileUtility.getWfhPath()).mkdir();
+        File file =new File(getHomePath() +FileUtility.getWfhPath()+fileName);
 
         if(!file.exists() || mode.equals("r")) {
             file.createNewFile();
@@ -20,7 +27,9 @@ public class FileWritter {
         writer.close();
     }
 
-    public static String fileReader(File file) throws IOException {
+    public static String fileReader(String fileName) throws IOException {
+        new File(getHomePath() + FileUtility.getWfhPath()).mkdir();
+        File file =new File(getHomePath() +FileUtility.getWfhPath()+fileName);
         String content="";
         FileReader fr = new FileReader(file);
         char [] a = new char[50];

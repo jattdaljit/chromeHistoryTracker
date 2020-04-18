@@ -11,7 +11,7 @@ public class FileUtility {
     final static String CHROME_PATH = "\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\History";
     final static String WFH_PATH = "\\AppData\\Local\\WFH\\";
     final static String DATE_FORMAT = "yyyy/MM/dd HH:mm:ss";
-    final static String USER_HOME_DIRECTORY = "user.home";
+    public final static String USER_HOME_DIRECTORY = "user.home";
 
     String copyFile() throws IOException {
         String filename = getFileNameBasedOnCurrentTime();

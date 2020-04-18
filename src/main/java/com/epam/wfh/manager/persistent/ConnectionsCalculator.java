@@ -38,14 +38,14 @@ public class ConnectionsCalculator {
         if( app.length() > 0 )
             app.deleteCharAt( app.length() - 1 );
 
-        FileWritter.writeFile(new File("connections-list"), app.toString(), "r");
+        FileWritter.writeFile("connections-list", app.toString(), "r");
     }
 
 
     public static void deserializeConnection() throws IOException {
         try {
             connectionStrength.keySet().forEach(c -> connectionStrength.remove(c));
-            String value = FileWritter.fileReader(new File("connections-list"));
+            String value = FileWritter.fileReader("connections-list");
             String[] all = value.split(",");
             for (String s : all) {
                 s = s.trim();

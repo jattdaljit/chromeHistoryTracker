@@ -21,10 +21,10 @@ public class HistoryTrackerApplication {
 
 		DataProcessor dataProcessor = new DataProcessor();
 		List<HistoryData> list = dataProcessor.processSqlData(resultSet);
-		//dataProcessor.printData(list);
+		dataProcessor.printData(list);
 		Integer totalTime = dataProcessor.calculateTotalTime(list);
 		Integer productiveTime = dataProcessor.getProductiveTime(list);
-		System.out.println("Productive minutes: " + productiveTime/60);
+		System.out.println("Productive minutes:  " + productiveTime/60);
 		System.out.println("Non-Productive minutes: "+ (totalTime-productiveTime)/60);
 
 
@@ -35,8 +35,8 @@ public class HistoryTrackerApplication {
 
 		//creating chart image out of data
 		Map<String, Integer> map = new HashMap<>();
-		map.put("Productive Hours", productiveTime/60);
-		map.put("Non Productive Hours", (totalTime-productiveTime)/60);
+		map.put("Productive Minutes", productiveTime/60);
+		map.put("Non Productive Minutes", (totalTime-productiveTime)/60);
 		PieChart pieChart = new PieChart();
 		pieChart.createChartImage(map);
 

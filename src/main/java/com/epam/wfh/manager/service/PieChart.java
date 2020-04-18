@@ -15,7 +15,7 @@ public class PieChart {
     private PieDataset createData(Map<String, Integer> map) {
         DefaultPieDataset data = new DefaultPieDataset();
         for (Map.Entry<String, Integer> entry : map.entrySet()) {
-            data.setValue(entry.getKey(), Double.valueOf(map.get(entry.getKey())));
+            data.setValue(entry.getKey() + ":\n " + Double.valueOf(map.get(entry.getKey())), Double.valueOf(map.get(entry.getKey())));
         }
         return data;
     }

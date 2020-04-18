@@ -62,7 +62,7 @@ public class Graph {
                 .me()
                 .events()
                 .buildRequest(options)
-                .select("subject,organizer,start,end,cancelled")
+                .select("subject,organizer,start,end")
                 .get();
 
         return eventPage.getCurrentPage();

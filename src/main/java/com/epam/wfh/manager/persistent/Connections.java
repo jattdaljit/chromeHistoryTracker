@@ -1,6 +1,7 @@
 package com.epam.wfh.manager.persistent;
 
 import com.microsoft.graph.models.extensions.DateTimeTimeZone;
+import com.microsoft.graph.models.extensions.Event;
 import com.microsoft.graph.models.extensions.Recipient;
 
 import java.util.ArrayList;
@@ -8,25 +9,30 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 public class Connections {
 
 
-    private static Map<DateTimeTimeZone, List<Recipient>> dailyCalenderRecords=new HashMap<>();
+    public static Map<String, List<Event>> dailyConnectionRecords=new HashMap<>();
 
-    public static void addConnection(DateTimeTimeZone time , Recipient with){
 
-        if(dailyCalenderRecords.containsKey(time)){
+    public static void addConnection(String time , Event with){
 
-            if(dailyCalenderRecords.get(time).stream().noneMatch(
-                    e ->e.emailAddress!=with.emailAddress
+        if(dailyConnectionRecords.containsKey(time)){
+            System.out.println("connection add new"+time);
+            if(dailyConnectionRecords.get(time).stream().noneMatch(
+                    e ->!e.organizer.equals(with.organizer)
             )){
-                dailyCalenderRecords.get(time).add(with);
+                System.out.println("append");
+                dailyConnectionRecords.get(time).add(with);
 
             }
         }else{
-            List<Recipient> names=new ArrayList<>();
+            System.out.println("adding new connection"+with);
+
+            List<Event> names=new ArrayList<>();
             names.add(with);
-            dailyCalenderRecords.put(time,names);
+            dailyConnectionRecords.put(time,names);
 
         }
 
@@ -34,8 +40,14 @@ public class Connections {
 
     public static void dispalyConnections() {
 
-        dailyCalenderRecords.entrySet().forEach(
-                e -> dailyCalenderRecords.get(e).forEach(t -> System.out.println(e + "  with >> " + t.emailAddress))
+        dailyConnectionRecords.keySet().forEach(
+
+                e -> {try {
+                    dailyConnectionRecords.get(e).forEach(t -> System.out.println(e + "  with >> " + t.organizer));
+                }catch (Exception em){
+                    System.out.println("Eception e"+em);
+                }
+                }
         );
 
 

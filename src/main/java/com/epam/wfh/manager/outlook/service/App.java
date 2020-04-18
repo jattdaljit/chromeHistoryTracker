@@ -1,6 +1,7 @@
 package com.epam.wfh.manager.outlook.service;
 
 
+import com.epam.wfh.manager.client.ServerClient;
 import com.epam.wfh.manager.persistent.*;
 import com.epam.wfh.manager.service.WindowsNotification;
 
@@ -34,6 +35,7 @@ public class App
             System.out.println(ConnectionsCalculator.newConnections);
             CalenderDaily.displayCalender();
             Connections.dispalyConnections();
+
             isExecuted=true;
             float meetingTime=0;
             float productiveTime=8;
@@ -47,6 +49,8 @@ public class App
             if(ConnectionsCalculator.newConnections.size()>0){
                 message+="\nNew Connection: "+ConnectionsCalculator.newConnections.size();
             }
+
+            ServerClient.postServerUpdate(MeetingHoursCalculator.stringRep);
             sendNotificationForMeetings(message);
 
         }catch (Exception ex){

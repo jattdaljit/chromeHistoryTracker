@@ -1,4 +1,4 @@
-package com.epam.historytracker.model;
+package com.epam.wfh.manager.model;
 
 import java.util.Date;
 

@@ -1,10 +1,10 @@
-package com.epam.historytracker;
+package com.epam.wfh.manager;
 
-import com.epam.historytracker.model.HistoryData;
-import com.epam.historytracker.service.DataProcessor;
-import com.epam.historytracker.service.PieChart;
-import com.epam.historytracker.service.SqlConnection;
-import com.epam.historytracker.service.WindowsNotification;
+import com.epam.wfh.manager.model.HistoryData;
+import com.epam.wfh.manager.service.DataProcessor;
+import com.epam.wfh.manager.service.PieChart;
+import com.epam.wfh.manager.service.SqlConnection;
+import com.epam.wfh.manager.service.WindowsNotification;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

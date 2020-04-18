@@ -1,6 +1,6 @@
-package com.epam.historytracker.service;
+package com.epam.wfh.manager.service;
 
-import com.epam.historytracker.model.HistoryData;
+import com.epam.wfh.manager.model.HistoryData;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

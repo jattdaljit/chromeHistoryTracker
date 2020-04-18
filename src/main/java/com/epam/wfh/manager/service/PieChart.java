@@ -1,4 +1,4 @@
-package com.epam.historytracker.service;
+package com.epam.wfh.manager.service;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;

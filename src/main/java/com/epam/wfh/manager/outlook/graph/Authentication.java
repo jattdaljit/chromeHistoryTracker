@@ -1,4 +1,4 @@
-package com.epam.wfh.manager.manager;
+package com.epam.wfh.manager.outlook.graph;
 
 import com.microsoft.aad.msal4j.DeviceCode;
 import com.microsoft.aad.msal4j.DeviceCodeFlowParameters;

@@ -1,4 +1,4 @@
-package com.epam.wfh.manager.manager.persistent;
+package com.epam.wfh.manager.persistent;
 
 import com.microsoft.graph.models.extensions.DateTimeTimeZone;
 import com.microsoft.graph.models.extensions.Event;

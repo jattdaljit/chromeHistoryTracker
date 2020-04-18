@@ -1,4 +1,4 @@
-package com.epam.wfh.manager.manager;
+package com.epam.wfh.manager.outlook.graph;
 
 import com.microsoft.graph.authentication.IAuthenticationProvider;
 import com.microsoft.graph.http.IHttpRequest;

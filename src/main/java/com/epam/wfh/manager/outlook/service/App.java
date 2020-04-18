@@ -1,11 +1,13 @@
-package com.epam.wfh.manager.manager;
+package com.epam.wfh.manager.outlook.service;
 
 
+import com.epam.wfh.manager.outlook.graph.Authentication;
+import com.epam.wfh.manager.outlook.graph.Graph;
 import com.microsoft.graph.models.extensions.DateTimeTimeZone;
 import com.microsoft.graph.models.extensions.Event;
 import com.microsoft.graph.models.extensions.User;
-import com.epam.wfh.manager.manager.persistent.CalenderDaily;
-import com.epam.wfh.manager.manager.persistent.Connections;
+import com.epam.wfh.manager.persistent.CalenderDaily;
+import com.epam.wfh.manager.persistent.Connections;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -23,14 +25,8 @@ public class App
 {
     public static void main( String[] args )
     {
-// Load OAuth settings
         final Properties oAuthProperties = new Properties();
-       /* try {
-            oAuthProperties.load(App.class.getResourceAsStream("oAuth.properties"));
-        } catch (IOException e) {
-            System.out.println("Unable to read OAuth configuration. Make sure you have a properly formatted oAuth.properties file. See README for details.");
-            return;
-        }*/
+
 
         final String appId = "";
         final String[] appScopes = "User.Read,Calendars.Read".split(",");

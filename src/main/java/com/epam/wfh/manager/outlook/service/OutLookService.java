@@ -1,5 +1,6 @@
 package com.epam.wfh.manager.outlook.service;
 
+import com.epam.wfh.manager.activity.emails.EmailsReadActivity;
 import com.epam.wfh.manager.outlook.graph.Authentication;
 import com.epam.wfh.manager.outlook.graph.Graph;
 import com.epam.wfh.manager.persistent.CalenderDaily;
@@ -43,7 +44,10 @@ public class OutLookService {
         }
 
     }
+    public static void getMessage(){
+        EmailsReadActivity.getEmails(accessToken);
 
+    }
     public static void listCalendarEvents() throws IOException {
         List<Event> events = Graph.getEvents(accessToken);
 

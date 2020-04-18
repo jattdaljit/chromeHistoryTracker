@@ -51,6 +51,14 @@
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.jdesktop/jdic -->
+		<!-- https://mvnrepository.com/artifact/org.jdesktop/jdic -->
+
+		<dependency>
+			<groupId>org.jdesktop</groupId>
+			<artifactId>jdic</artifactId>
+			<version>0.9.4</version>
+		</dependency>
 
 		<!-- jpa, crud repository -->
 		<dependency>

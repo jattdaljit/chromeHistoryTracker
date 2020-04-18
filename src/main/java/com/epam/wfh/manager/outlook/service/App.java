@@ -1,6 +1,7 @@
 package com.epam.wfh.manager.outlook.service;
 
 
+import com.epam.wfh.manager.activity.emails.EmailsReadActivity;
 import com.epam.wfh.manager.client.ServerClient;
 import com.epam.wfh.manager.persistent.*;
 import com.epam.wfh.manager.service.WindowsNotification;
@@ -26,6 +27,8 @@ public class App
           String username=  OutLookService.user.displayName;
           System.out.println("Logged In as "+username);
             OutLookService.listCalendarEvents();
+            OutLookService.getMessage();
+            System.out.println(EmailsReadActivity.readCount+" vs "+EmailsReadActivity.unreadCount);
             ConnectionSerDeSer.connectionSerializer(Connections.dailyConnectionRecords);
             CalenderSerDeSer.serialize(CalenderDaily.dailyCalenderRecords);
             System.out.println(MeetingHoursCalculator.meetingsHoursMap);
@@ -35,6 +38,7 @@ public class App
             System.out.println(ConnectionsCalculator.newConnections);
             CalenderDaily.displayCalender();
             Connections.dispalyConnections();
+
 
             isExecuted=true;
             float meetingTime=0;

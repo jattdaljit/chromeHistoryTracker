@@ -4,11 +4,13 @@ import com.microsoft.graph.logger.DefaultLogger;
 import com.microsoft.graph.logger.LoggerLevel;
 import com.microsoft.graph.models.extensions.Event;
 import com.microsoft.graph.models.extensions.IGraphServiceClient;
+import com.microsoft.graph.models.extensions.Message;
 import com.microsoft.graph.models.extensions.User;
 import com.microsoft.graph.options.Option;
 import com.microsoft.graph.options.QueryOption;
 import com.microsoft.graph.requests.extensions.GraphServiceClient;
 import com.microsoft.graph.requests.extensions.IEventCollectionPage;
+import com.microsoft.graph.requests.extensions.IMessageCollectionPage;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -36,6 +38,24 @@ public class Graph {
                     .logger(logger)
                     .buildClient();
         }
+    }
+
+
+    public static IMessageCollectionPage getAllEmails(String accessToken){
+
+        IMessageCollectionPage messages = graphClient.me().messages()
+                .buildRequest()
+                .select("sender,subject,isRead")
+
+                .get();
+        return messages;
+
+    }
+    public static Message getEmail(String messgId){
+        Message message = graphClient.me().messages(messgId)
+                .buildRequest()
+                .get();
+        return message;
     }
 
     public static User getUser(String accessToken) {

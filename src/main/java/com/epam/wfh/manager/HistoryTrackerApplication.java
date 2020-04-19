@@ -23,6 +23,8 @@ public class HistoryTrackerApplication {
 		List<HistoryData> list = dataProcessor.processSqlData(resultSet);
 		//dataProcessor.printData(list);
 		Map<String,Integer> map = dataProcessor.getWebsiteVisitFrequency(list);
+
+
 //		for(Map.Entry<String,Integer> entry : map.entrySet()){
 //			System.out.println("URL: " + entry.getKey() + " Count: " + entry.getValue() );
 //		}

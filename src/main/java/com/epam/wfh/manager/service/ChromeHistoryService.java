@@ -5,6 +5,7 @@ import com.epam.wfh.manager.model.HistoryData;
 import org.springframework.web.client.RestTemplate;
 
 import java.sql.ResultSet;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.Callable;
@@ -26,6 +27,10 @@ public class ChromeHistoryService implements Callable {
         Integer productive = dataProcessor.getProductiveTime(list);
         chromeHistoryTimes.setProductiveTime(productive);
         chromeHistoryTimes.setNonProductiveTime(totalTime - productive);
+        Map<String,Integer> data = new HashMap<>();
+        data.put("Productive Minutes", productive/60);
+        data.put("Non Proudctive Minutes", (totalTime-productive)/60);
+        postUpateHoursToServer(data);
         Map<String,Integer> map = dataProcessor.getWebsiteVisitFrequency(list);
         postUpdateToServer(map);
         return chromeHistoryTimes;
@@ -43,5 +48,17 @@ public class ChromeHistoryService implements Callable {
             System.out.println("failure in sending server update from history chrome"+ex);
         }
 
+    }
+
+    public void postUpateHoursToServer(Map<String,Integer> map){
+        try {
+            final String uri = "http://localhost:8080/chrome-aggr";
+
+            RestTemplate restTemplate = new RestTemplate();
+            System.out.println(map);
+            restTemplate.postForObject(uri, map, Map.class);
+        }catch (Exception ex){
+            System.out.println("failure in sending server update from aggregate history chrome"+ex);
+        }
     }
 }

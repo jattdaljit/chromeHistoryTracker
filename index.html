@@ -4,21 +4,15 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-
-
-
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-
-
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
     <style>
         .chart {
-            width: 400px;
-            length: 300px;
+            width: 900px;
+            height: 500px;
         }
     </style>
     <script src="index.js"></script>
@@ -38,66 +32,23 @@
             </div>
         </div>
     </nav>
-    <div class="row">
+    <div class="row text-center">
         <div class="col-6 chart">
-            <div class="text-center"> CHROME HISTORY</div>
+            <div class="text-center"> Browser Data</div>
+            <canvas id="chromeAggrData"></canvas>
+        </div>
+    </div>
+    <div class="row text-center">
+        <div class="col-12 chart">
+            <div class="text-center"> Browser Analytics</div>
             <canvas id="chromeHistory"></canvas>
         </div>
-        <div class="col-6 chart">
-            <div class="text-center"> OUTLOOK</div>
-            <canvas id="outlook"></canvas>
-        </div>
     </div>
-    <div class="row chart">
-    </div>
-
 
 </div>
-
-
-
 <script>
-
-
-
 var data =getChromeData();
-
-console.log(labels)
-console.log(count)
-
-someFunction();
-
-
-
-function SomeFuntion()
-{
-        debugger; alert("Before web service");
-
-
-
-        //PageMethods.CreateDraft(var1, var2, var3, var4);
-
-
-
-        $.ajax
-            (
-                {
-                    type: "POST",
-                    url: "localhost:8080/chrome-history",
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    success:
-                        function()
-                        {
-                            alert("In ajax");
-                        }
-                }
-            );
-}
+var data =getAggrChromeData();
 </script>
-
-
-
-
 </body>
 </html>

@@ -40,6 +40,32 @@ function getAggrChromeData(){
     console.log(uri)
     return getFromServerAggr(uri);
 }
+var varFreeTime= new Array();
+var varMettingTime= new Array();
+var varMonth = new Array();
+function getWorkingHoursServer( uri){
+$.get(serviceUrl+uri, function(data, status){
+console.log(data)
+  }).done(function(data) {
+
+ for (k in data){
+console.log(data[k])
+  varMonth.push(k);
+  varMettingTime.push(data[k]/60);
+  varFreeTime.push(8-(data[k]/60));
+ }
+ console.log(varMonth)
+ console.log(varMettingTime)
+ console.log(varFreeTime)
+
+ barWorkingHours();
+ });
+}
+getWorkingHours();
+function getWorkingHours(){
+    uri="/workinghour";
+    return getWorkingHoursServer(uri);
+}
 
 
 function prepareBar(labels, count){
@@ -179,3 +205,112 @@ var borderColor = [
          'rgba(153, 102, 255, 1)',
          'rgba(255, 159, 64, 1)'
   ]
+
+
+
+var colorSec = [
+    'rgba(75, 192, 192, 0.2)',
+    'rgba(54, 162, 235, 0.2)',
+    'rgba(255, 99, 132, 0.2)',
+    'rgba(255, 206, 86, 0.2)',
+    'rgba(153, 102, 255, 0.2)',
+    'rgba(255, 159, 64, 0.2)',
+    'rgba(255, 99, 132, 0.2)',
+     'rgba(54, 162, 235, 0.2)',
+     'rgba(255, 206, 86, 0.2)',
+     'rgba(75, 192, 192, 0.2)',
+     'rgba(153, 102, 255, 0.2)',
+     'rgba(255, 159, 64, 0.2)',
+     'rgba(255, 99, 132, 0.2)',
+     'rgba(54, 162, 235, 0.2)',
+     'rgba(255, 206, 86, 0.2)',
+     'rgba(75, 192, 192, 0.2)',
+     'rgba(153, 102, 255, 0.2)',
+     'rgba(255, 159, 64, 0.2)',
+     'rgba(255, 99, 132, 0.2)',
+     'rgba(54, 162, 235, 0.2)',
+     'rgba(255, 206, 86, 0.2)',
+     'rgba(75, 192, 192, 0.2)',
+     'rgba(153, 102, 255, 0.2)',
+     'rgba(255, 159, 64, 0.2)',
+     'rgba(255, 99, 132, 0.2)',
+     'rgba(54, 162, 235, 0.2)',
+     'rgba(255, 206, 86, 0.2)',
+     'rgba(75, 192, 192, 0.2)',
+     'rgba(153, 102, 255, 0.2)',
+     'rgba(255, 159, 64, 0.2)',
+     'rgba(255, 99, 132, 0.2)',
+     'rgba(54, 162, 235, 0.2)',
+     'rgba(255, 206, 86, 0.2)',
+     'rgba(75, 192, 192, 0.2)',
+     'rgba(153, 102, 255, 0.2)',
+     'rgba(255, 159, 64, 0.2)',
+     'rgba(255, 99, 132, 0.2)',
+     'rgba(54, 162, 235, 0.2)',
+     'rgba(255, 206, 86, 0.2)',
+     'rgba(75, 192, 192, 0.2)',
+     'rgba(153, 102, 255, 0.2)',
+     'rgba(255, 159, 64, 0.2)'
+];
+
+
+function barWorkingHours(){
+var workingHoursbar = document.getElementById('workingHoursbar').getContext('2d');
+var myChart = new Chart(workingHoursbar, {
+    type: 'line',
+    data: {
+        datasets: [{
+            data: varMettingTime,
+            label: 'Meetings',
+            backgroundColor: color,
+            borderColor: borderColor,
+            borderWidth: 1,
+            // This binds the dataset to the left y axis
+            yAxisID: 'left-y-axis'
+        }, {
+            data: varFreeTime,
+            label: 'Time to Focus',
+            backgroundColor: colorSec,
+            borderColor: borderColor,
+            borderWidth: 1,
+            // This binds the dataset to the right y axis
+            yAxisID: 'right-y-axis'
+        }],
+        labels: varMonth
+    },
+    options: {
+        beginAtZero: true,
+        scales: {
+            yAxes: [{
+                id: 'left-y-axis',
+                type: 'linear',
+                position: 'left',
+                 ticks: {
+                                    beginAtZero: true
+                       }
+            }, {
+                id: 'right-y-axis',
+                type: 'linear',
+                position: 'right',
+                                                  ticks: {
+                                                                     beginAtZero: true
+                                                        }
+            }]
+        }
+    }
+});
+
+}
+getNewConnectionsList();
+function getNewConnectionsListServer(uri){
+$.get(serviceUrl+uri, function(data, status){
+
+    console.log(data);
+  }).done(function(data) {
+       });
+}
+
+function getNewConnectionsList(){
+    uri="/newconnections"
+    return getNewConnectionsListServer(uri);
+}

@@ -1,6 +1,7 @@
 package com.epam.wfh.manager.persistent;
 
-import java.io.File;
+import org.springframework.web.client.RestTemplate;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -60,5 +61,28 @@ public class ConnectionsCalculator {
         }
     }
 
+    public static void connectionServerUpdater(){
+
+        try {
+            final String uri = "http://localhost:8080/connectionlist";
+
+            RestTemplate restTemplate = new RestTemplate();
+
+            restTemplate.postForObject(uri, connectionStrength, Map.class);
+        }catch (Exception ex){
+            System.out.println("failure in sending server update from history chrome"+ex);
+        }
+
+        try {
+            final String uri = "http://localhost:8080/newconnections";
+
+            RestTemplate restTemplate = new RestTemplate();
+
+            restTemplate.postForObject(uri, newConnections, Set.class);
+        }catch (Exception ex){
+            System.out.println("failure in sending server update from history chrome"+ex);
+        }
+
+    }
 
 }

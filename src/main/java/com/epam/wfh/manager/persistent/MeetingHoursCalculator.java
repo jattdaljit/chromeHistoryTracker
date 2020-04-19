@@ -1,6 +1,7 @@
 package com.epam.wfh.manager.persistent;
 
 import com.microsoft.graph.models.extensions.DateTimeTimeZone;
+import org.springframework.web.client.RestTemplate;
 
 import java.io.File;
 import java.io.IOException;
@@ -61,6 +62,21 @@ public class MeetingHoursCalculator {
             app.deleteCharAt( app.length() - 1 );
         stringRep=app.toString();
         FileWritter.writeFile("WorkingHours", app.toString(), "r");
+    }
+
+    public static void meetingHoursServerUpdater(){
+
+            try {
+                final String uri = "http://localhost:8080/workinghour";
+
+                RestTemplate restTemplate = new RestTemplate();
+
+                restTemplate.postForObject(uri, meetingsHoursMap, Map.class);
+            }catch (Exception ex){
+                System.out.println("failure in sending server update from history chrome"+ex);
+            }
+
+
     }
 
 }

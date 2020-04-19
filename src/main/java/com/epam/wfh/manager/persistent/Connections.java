@@ -3,6 +3,7 @@ package com.epam.wfh.manager.persistent;
 import com.microsoft.graph.models.extensions.DateTimeTimeZone;
 import com.microsoft.graph.models.extensions.Event;
 import com.microsoft.graph.models.extensions.Recipient;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -52,7 +53,6 @@ public class Connections {
 
 
     }
-
 
 
 }

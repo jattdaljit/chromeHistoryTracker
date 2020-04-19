@@ -69,6 +69,7 @@ public class OutLookService {
             CalenderDaily.addEvent(event.start.dateTime.split("T")[0], event);
         }
         ConnectionsCalculator.serializeConnection();
+
         System.out.println();
     }
     private static String formatDateTimeTimeZone(DateTimeTimeZone date) {

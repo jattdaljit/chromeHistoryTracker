@@ -38,7 +38,8 @@ public class App
             System.out.println(ConnectionsCalculator.newConnections);
             CalenderDaily.displayCalender();
             Connections.dispalyConnections();
-
+            MeetingHoursCalculator.meetingHoursServerUpdater();
+            ConnectionsCalculator.connectionServerUpdater();
 
             isExecuted=true;
             float meetingTime=0;
@@ -54,7 +55,6 @@ public class App
                 message+="\nNew Connection: "+ConnectionsCalculator.newConnections.size();
             }
 
-            ServerClient.postServerUpdate(MeetingHoursCalculator.stringRep);
             sendNotificationForMeetings(message);
 
         }catch (Exception ex){

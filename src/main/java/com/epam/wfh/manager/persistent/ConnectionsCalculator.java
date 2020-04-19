@@ -45,8 +45,9 @@ public class ConnectionsCalculator {
 
     public static void deserializeConnection() throws IOException {
         try {
-            connectionStrength.keySet().forEach(c -> connectionStrength.remove(c));
+            //connectionStrength.keySet().forEach(c -> connectionStrength.remove(c));
             String value = FileWritter.fileReader("connections-list");
+            System.out.println("file content >>"+value);
             String[] all = value.split(",");
             for (String s : all) {
                 s = s.trim();
@@ -54,10 +55,20 @@ public class ConnectionsCalculator {
                 if (v[1].contains("=")) {
                     v[1] = v[1].substring(0, v[1].indexOf("="));
                 }
+                if(connectionStrength.containsKey(v[0])){
+                    int valueFromMap =connectionStrength.get(v[0]);
+                    valueFromMap=valueFromMap>Integer.parseInt(v[1])?valueFromMap:Integer.parseInt(v[1]);
+                    connectionStrength.remove(v[0]);
+                    connectionStrength.put(v[0],valueFromMap);
+                }
+                else
                 connectionStrength.put(v[0], Integer.parseInt(v[1]));
             }
+            System.out.println("connection updated"+connectionStrength.size());
+
         }catch (Exception e){
-            System.out.println("unable to de");
+            System.out.println("unable to de in connection list update");
+            e.printStackTrace();
         }
     }
 

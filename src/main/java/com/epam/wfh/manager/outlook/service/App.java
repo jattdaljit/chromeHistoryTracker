@@ -52,10 +52,12 @@ public class App
                 message+="\nNew Connection: "+ConnectionsCalculator.newConnections.size();
             }
 
+
+
             MeetingHoursCalculator.meetingHoursServerUpdater();
+            System.out.println("before server update"+ConnectionsCalculator.connectionStrength);
+
             ConnectionsCalculator.connectionServerUpdater();
-
-
             sendNotificationForMeetings(message);
 
         }catch (Exception ex){

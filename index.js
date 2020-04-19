@@ -314,3 +314,20 @@ function getNewConnectionsList(){
     uri="/newconnections"
     return getNewConnectionsListServer(uri);
 }
+
+
+
+getConnectionsList();
+function getConnectionsListServer(uri){
+$.get(serviceUrl+uri, function(data, status){
+
+    console.log(data);
+  }).done(function(data) {
+       });
+}
+
+function getConnectionsList(){
+    uri="/connectionlist"
+    return getConnectionsListServer(uri);
+}
+

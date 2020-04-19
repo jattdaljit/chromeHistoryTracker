@@ -35,7 +35,7 @@ public class WindowsNotification {
             {
                 System.out.println("activated click event");
                 FileUtility fileUtility = new FileUtility();
-                File chartImage = new File(fileUtility.getHomePath() + fileUtility.getWfhPath() + "image.png");
+                File chartImage = new File(fileUtility.getHomePath() + fileUtility.getWfhPath() + "index.html");
                 Desktop dt = Desktop.getDesktop();
                 try {
                     System.out.println("opening file");

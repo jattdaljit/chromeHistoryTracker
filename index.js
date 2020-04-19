@@ -300,11 +300,13 @@ var myChart = new Chart(workingHoursbar, {
 
 }
 getNewConnectionsList();
+var listNewConnection= new Array();
 function getNewConnectionsListServer(uri){
 $.get(serviceUrl+uri, function(data, status){
 
     console.log(data);
   }).done(function(data) {
+  listNewConnection=data;
        });
 }
 
@@ -315,14 +317,22 @@ function getNewConnectionsList(){
 
 
 
+var valuesGraph=new Array();
 getConnectionsList();
 function getConnectionsListServer(uri){
 $.get(serviceUrl+uri, function(data, status){
-
-
-    console.log(data);
   }).done(function(data) {
-       });
+  console.log("new>>>>>.");
+  console.log(listNewConnection);
+        var i=0;
+        for(a in data){
+        valuesGraph[i]=new Array()
+         valuesGraph[i].push("YOU");
+
+         valuesGraph[i].push(a.split("@")[0]);
+         i++;
+        }
+  });
 }
 
 function getConnectionsList(){

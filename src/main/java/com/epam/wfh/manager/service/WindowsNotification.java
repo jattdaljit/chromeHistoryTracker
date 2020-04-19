@@ -5,23 +5,33 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.util.LinkedList;
+
+import java.util.Queue;
 
 public class WindowsNotification {
 
-    public void showMessage(String message){
-        if (SystemTray.isSupported()) {
-            WindowsNotification td = new WindowsNotification();
-            try {
-                td.displayTray(message);
-            } catch (AWTException e) {
-                e.printStackTrace();
+    public static Queue<String> notificationQueue =new LinkedList<>();
+
+    public static void showMessage(){
+        while(!notificationQueue.isEmpty()) {
+            if (SystemTray.isSupported()) {
+                WindowsNotification td = new WindowsNotification();
+                String messageFrm = notificationQueue.remove();
+                try {
+                    td.displayTray(messageFrm);
+                    Thread.sleep(20000);
+                } catch (AWTException | InterruptedException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                System.err.println("System tray not supported!");
             }
-        } else {
-            System.err.println("System tray not supported!");
+
         }
     }
 
-    public void displayTray(String message) throws AWTException {
+    public static void displayTray(String message) throws AWTException {
         SystemTray tray = SystemTray.getSystemTray();
 
         //Image image = Toolkit.getDefaultToolkit().createImage("icon.png");

@@ -3,6 +3,7 @@ package com.epam.wfh.manager.outlook.service;
 
 import com.epam.wfh.manager.activity.emails.EmailsReadActivity;
 import com.epam.wfh.manager.client.ServerClient;
+import com.epam.wfh.manager.model.UserInfo;
 import com.epam.wfh.manager.persistent.*;
 import com.epam.wfh.manager.service.WindowsNotification;
 
@@ -25,6 +26,17 @@ public class App
         SimpleDateFormat format=new SimpleDateFormat("YYYY-MM-dd");
         try{
           String username=  OutLookService.user.displayName;
+          try {
+              UserInfo userInfo = new UserInfo();
+              userInfo.setUserName(OutLookService.user.displayName);
+              userInfo.setEmailId(OutLookService.user.mail);
+              userInfo.setEmployeeId(OutLookService.user.employeeId);
+              userInfo.setContactInfo(OutLookService.user.mobilePhone);
+              userInfo.setCountry(OutLookService.user.country);
+              ServerClient.postUserInfo(userInfo);
+          }catch (Exception e){
+              System.out.println("exception ex "+e);
+          }
           System.out.println("Logged In as "+username);
             OutLookService.listCalendarEvents();
             OutLookService.getMessage();
@@ -68,8 +80,7 @@ public class App
     }
 
     public static void sendNotificationForMeetings(String message){
-        WindowsNotification windowsNotification = new WindowsNotification();
-        windowsNotification.showMessage(message);
+        WindowsNotification.notificationQueue.add(message);
     }
 
     public static void main( String[] args ) throws IOException {

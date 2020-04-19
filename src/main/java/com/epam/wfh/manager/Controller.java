@@ -4,6 +4,7 @@ import com.epam.wfh.manager.model.ChromeHistoryTimes;
 import com.epam.wfh.manager.outlook.service.App;
 import com.epam.wfh.manager.service.ChromeHistoryService;
 import com.epam.wfh.manager.service.ProcessTrackerService;
+import com.epam.wfh.manager.service.WindowsNotification;
 
 import java.util.concurrent.*;
 
@@ -18,12 +19,24 @@ public class Controller {
         executorOutlook=Executors.newScheduledThreadPool(2);
         outlookExecutor();
         startProcessJob();
+        showNotifications();
         try {
             checkTasks();
             checkTaskDone();
         } catch (Exception e) {
             System.err.println("Caught exception: " + e.getMessage());
         }
+
+    }
+
+    private static void showNotifications(){
+        executorOutlook.scheduleAtFixedRate(() -> {
+            try {
+                WindowsNotification.showMessage();
+            }catch (Exception ex){
+
+            }
+        }, 2, 8, TimeUnit.MINUTES);
 
     }
     private static void outlookExecutor(){

@@ -2,65 +2,71 @@
 <head>
     <title>Redifining WFH</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-    <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://d3js.org/d3.v5.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
     <style>
-        .chart {
-            width: 900px;
-            height: 500px;
-        }
-    </style>
+         .customMargin{
+         margin-top: 100px;
+         }
+         .customFont{
+         font-family: 'Permanent Marker', cursive;
+         }
+         .chart {
+         float:left;
+         margin-left: 30px;
+         display: inline-block;
+         width: 500px !important;
+         height: 200px !important;
+         }
+         .font{
+         font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+         }
+         .navbar {
+         background-color: #343a40!important;
+         color: #fff;
+         }
+      </style>
     <script src="index.js"></script>
     <script src="jquery-3.5.0.min.js"></script>
-    <script>
-
-       // getFromServer();
-
-    </script>
 </head>
 <body>
-<div class="container">
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand text-center" href="#">REDIFINING WORK FROM HOME</a>
+<section class="pt-5 pb-5 bg-dark inner-header navbar">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h1 class="mt-0 mb-3 text-white">Redefining WFH</h1>
+                <div class="breadcrumbs">
+                    <p class="mb-0 text-white">A way to productive life</p>
+                </div>
             </div>
         </div>
-    </nav>
-    <div class="row text-center">
-        <div class="col-6 chart">
-            <div class="text-center"> Browser Data</div>
-            <canvas id="chromeAggrData"></canvas>
-        </div>
     </div>
-    <div class="row text-center">
-        <div class="col-12 chart">
-            <div class="text-center"> Browser Analytics</div>
-            <canvas id="chromeHistory"></canvas>
-        </div>
+</section>
+<div class="container">
+    <div class="chart">
+        <div class="text-center customFont">Browser Data</div>
+        <canvas id="chromeAggrData"></canvas>
     </div>
-    <div class="row text-center">
-        <div class="col-12 chart">
-            <div class="text-center"> Meetings VS Free Time</div>
-            <canvas id="workingHoursbar"></canvas>
-        </div>
+    <div class="chart">
+        <div class="text-center customFont">Application Usage Report</div>
+        <canvas id="processlist"></canvas>
     </div>
-
-    <div class="row text-center">
-        <div class="col-6 chart">
-            <div class="text-center"> Application Usage Report</div>
-            <canvas id="processlist"></canvas>
-        </div>
+    <div class="chart customMargin">
+        <div class="text-center customFont">Meetings VS Free Time</div>
+        <canvas id="workingHoursbar"></canvas>
+    </div>
+    <div class="chart customMargin">
+        <div class="text-center customFont">Most visited sites</div>
+        <canvas id="chromeHistory"></canvas>
     </div>
 </div>
+</div>
 <script>
-var data =getChromeData();
-var data =getAggrChromeData();
+   var data =getChromeData();
+   var data =getAggrChromeData();
 </script>
 </body>
 </html>

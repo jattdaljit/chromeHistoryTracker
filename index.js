@@ -91,11 +91,9 @@ var myChart = new Chart(chromeHistory, {
                 }
             }]
         }
+
     }
 });
-
-
-
 }
 
 function pieChart(labels, count){

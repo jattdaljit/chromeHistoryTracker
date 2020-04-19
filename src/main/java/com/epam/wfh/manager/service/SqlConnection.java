@@ -20,7 +20,7 @@ public class SqlConnection {
     }
 
     public ResultSet getData() {
-        String sql = "SELECT urls.url AS URL, datetime(last_visit_time / 1000000 - 11644473600, 'unixepoch', 'localtime')" +
+        String sql = "SELECT urls.url AS URL, urls.visit_count AS COUNT, datetime(last_visit_time / 1000000 - 11644473600, 'unixepoch', 'localtime')" +
                 " AS TIME, (visits.visit_duration/1000000) AS DURATION FROM urls LEFT JOIN visits ON urls.id = visits.url";
 
         try {

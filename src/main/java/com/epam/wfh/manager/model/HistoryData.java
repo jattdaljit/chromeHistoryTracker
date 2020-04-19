@@ -6,6 +6,15 @@ public class HistoryData implements Comparable<HistoryData> {
     String url;
     Date lastVisitTime;
     String duration;
+    Integer visitCount;
+
+    public Integer getVisitCount() {
+        return visitCount;
+    }
+
+    public void setVisitCount(Integer visitCount) {
+        this.visitCount = visitCount;
+    }
 
     public String getUrl() {
         return url;

@@ -32,7 +32,6 @@
     <script src="index.js"></script>
     <script src="jquery-3.5.0.min.js"></script>
     <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/highcharts.src.js"></script>
     <script src="https://code.highcharts.com/modules/networkgraph.js"></script>
 </head>
 <body>
@@ -58,8 +57,6 @@
     </div>
 </section>
 <div class="container">
-
-    <div id="containerNetwork"></div>
     <div class="chart">
         <div class="text-center customFont">Meetings VS Free Time</div>
         <canvas id="workingHoursbar"></canvas>
@@ -78,6 +75,10 @@
         <div class="text-center customFont">Most visited sites</div>
         <canvas id="chromeHistory"></canvas>
     </div>
+    <div class="chart customMargin">
+        <div id="containerNetwork"></div>
+    </div>
+
 </div>
 </div>
 <script>
@@ -85,9 +86,9 @@
    var data =getAggrChromeData();
 
 </script>
+</body>
 <script>
-
-    Highcharts.Chart('containerNetwork', {
+Highcharts.chart('containerNetwork', {
   chart: {
     type: 'networkgraph',
     marginTop: 80
@@ -118,7 +119,5 @@
     ]
   }]
 });
-
 </script>
-</body>
 </html>

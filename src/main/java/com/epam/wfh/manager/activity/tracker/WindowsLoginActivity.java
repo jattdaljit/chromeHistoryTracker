@@ -9,7 +9,6 @@ public class WindowsLoginActivity {
 
     public static void findWindowsLoginActivity() throws InterruptedException, IOException {
 
-
         Process p;
         StringBuilder sb = new StringBuilder();
 

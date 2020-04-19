@@ -1,10 +1,7 @@
 package com.epam.wfh.manager;
 
 import com.epam.wfh.manager.model.HistoryData;
-import com.epam.wfh.manager.service.DataProcessor;
-import com.epam.wfh.manager.service.PieChart;
-import com.epam.wfh.manager.service.SqlConnection;
-import com.epam.wfh.manager.service.WindowsNotification;
+import com.epam.wfh.manager.service.*;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -46,6 +43,9 @@ public class HistoryTrackerApplication {
 		PieChart pieChart = new PieChart();
 		pieChart.createChartImage(map, "");
 
+		//need to make it argument driven
+		ProcessTrackerService service = new ProcessTrackerService();
+		service.trackProcesses();
 
 	}
 

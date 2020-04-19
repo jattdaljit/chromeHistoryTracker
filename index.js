@@ -376,3 +376,21 @@ var myChart = new Chart(processlist, {
 
 
 }
+
+
+getUserInfo();
+function getUserInfoServer(uri){
+$.get(serviceUrl+uri, function(data, status){
+    console.log(data);
+  }).done(function(data) {
+    $("#email").html(data.emailId);
+    $("#username").html(data.userName);
+
+       });
+}
+
+function getUserInfo(){
+    uri="/userinfo"
+    return getUserInfoServer(uri);
+}
+

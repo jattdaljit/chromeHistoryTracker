@@ -15,7 +15,7 @@ public class Controller {
     private static volatile Future taskTwoResults = null;
 
     public static void main(String args[]) {
-        executor = Executors.newFixedThreadPool(1);
+        executor = Executors.newFixedThreadPool(3);
         executorOutlook=Executors.newScheduledThreadPool(2);
         outlookExecutor();
         startProcessJob();

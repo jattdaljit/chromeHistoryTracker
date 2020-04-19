@@ -43,9 +43,7 @@ public class HistoryTrackerApplication {
 		PieChart pieChart = new PieChart();
 		pieChart.createChartImage(map, "");
 
-		//need to make it argument driven
-		ProcessTrackerService service = new ProcessTrackerService();
-		service.trackProcesses();
+
 
 	}
 

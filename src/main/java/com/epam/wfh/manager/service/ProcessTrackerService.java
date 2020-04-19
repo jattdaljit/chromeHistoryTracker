@@ -9,7 +9,7 @@ public class ProcessTrackerService {
 
     public void trackProcesses(){
         ProcessTrackerService pt= new ProcessTrackerService();
-        ProcessBuilder processBuilder = new ProcessBuilder(pt.getRelPath(),"args","60","SECONDS");
+        ProcessBuilder processBuilder = new ProcessBuilder(pt.getRelPath(),"args","600","SECONDS");
         Process process= null;
         try {
             process = processBuilder.inheritIO().start();

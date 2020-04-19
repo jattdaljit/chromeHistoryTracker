@@ -321,6 +321,7 @@ getConnectionsList();
 function getConnectionsListServer(uri){
 $.get(serviceUrl+uri, function(data, status){
 
+
     console.log(data);
   }).done(function(data) {
        });
@@ -331,3 +332,49 @@ function getConnectionsList(){
     return getConnectionsListServer(uri);
 }
 
+getProcessList();
+function getProcessListServer(uri){
+$.get(serviceUrl+uri, function(data, status){
+
+    console.log(data);
+  }).done(function(data) {
+
+  for(k in data.apps){
+  console.log(">>> "+data.apps[k])
+  if(data.apps[k]==""){
+
+    data.apps[k]="ALT";
+  }
+  }
+  prepareDoughnut(data.apps, data.timeSpent)
+       });
+}
+
+function getProcessList(){
+    uri="/processes"
+    return getProcessListServer(uri);
+}
+
+
+
+function prepareDoughnut(labels, count){
+
+var processlist = document.getElementById('processlist').getContext('2d');
+var myChart = new Chart(processlist, {
+    type: 'doughnut',
+    data: {
+        labels: labels,
+        datasets: [{
+            label: 'Application Analytics',
+            data: count,
+            backgroundColor: color,
+            borderColor: borderColor,
+            borderWidth: 1
+        }]
+    },
+    options: {
+    }
+});
+
+
+}

@@ -3,6 +3,7 @@ package com.epam.wfh.manager;
 import com.epam.wfh.manager.model.ChromeHistoryTimes;
 import com.epam.wfh.manager.outlook.service.App;
 import com.epam.wfh.manager.service.ChromeHistoryService;
+import com.epam.wfh.manager.service.ProcessTrackerService;
 
 import java.util.concurrent.*;
 
@@ -14,8 +15,9 @@ public class Controller {
 
     public static void main(String args[]) {
         executor = Executors.newFixedThreadPool(1);
-        executorOutlook=Executors.newScheduledThreadPool(1);
+        executorOutlook=Executors.newScheduledThreadPool(2);
         outlookExecutor();
+        startProcessJob();
         try {
             checkTasks();
             checkTaskDone();
@@ -43,5 +45,20 @@ public class Controller {
         ChromeHistoryTimes chromeHistoryTimes = (ChromeHistoryTimes) taskOneResults.get();
         System.out.println(chromeHistoryTimes);
         executor.shutdown();
+    }
+    public static void startProcessJob(){
+        executor.execute(()->
+            startProcessTracker());
+    }
+
+    public static void startProcessTracker(){
+try {
+    //need to make it argument driven
+    ProcessTrackerService service = new ProcessTrackerService();
+    service.trackProcesses();
+}catch (Exception ex){
+    System.out.println("Exception in starting the process tracker");
+    ex.printStackTrace();
+}
     }
 }
